@@ -108,14 +108,46 @@
     //
     // test if a specific column on this board contains a conflict
     hasColConflictAt: function(colIndex) {
-      return false; // fixme
+      var n = this.get('n');
+      var already1 = false;
+      for (var i = 0; i < n; i++) {
+        var row = this.get(i);
+        if (already1 && row[colIndex] === 1) {
+          return true;
+        } else if (row[colIndex] === 1) {
+          already1 = true;
+        }
+      }
+      return false;
     },
 
     // test if any columns on this board contain conflicts
     hasAnyColConflicts: function() {
-      return false; // fixme
+      var n = this.get('n');
+      for (var i = 0; i < n; i++) {
+        // console.log(this.hasColConflictAt(0));
+        if (this.hasColConflictAt(i)) {
+          return true;
+        }
+      }
+
+      return false;
     },
 
+    // var already = false;
+    // for (var rowNum = 0; rowNum < n; rowNum++) {
+    //   var row = this.get(rowNum);
+    //   // for each column in n
+    //   for (var column = 0; column < n; column++) {
+    //     if (rowNum[column] === 1 && already) {
+    //       return true;
+    //     } else if (rowNum[column] === 1) {
+    //       already = true;
+    //     }
+          
+    //   }
+
+    // }
 
 
     // Major Diagonals - go from top-left to bottom-right
