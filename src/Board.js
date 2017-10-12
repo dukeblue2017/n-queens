@@ -182,8 +182,6 @@
       while (rowCount < n && columnCount >= 0) {
         var row = this.get(rowCount);
         var value = row[columnCount];
-        // console.log('row', row);
-        // console.log('value', value);
         if (already && value === 1) {
           return true;
         } else if (value === 1) {
