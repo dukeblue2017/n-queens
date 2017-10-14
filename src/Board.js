@@ -79,6 +79,7 @@
     //
     // test if a specific row on this board contains a conflict
     hasRowConflictAt: function(rowIndex) {
+      // time complexity: O(N)
       var row = this.get(rowIndex);
       var already1 = false;
       for (var i = 0; i < row.length; i++) {
@@ -92,6 +93,7 @@
     },
 
     hasAnyRowConflicts: function() {
+      // time complexity: O(N^n)
       var n = this.get('n');
       for (var i = 0; i < n; i++) {
         if (this.hasRowConflictAt(i)) {
@@ -108,6 +110,7 @@
     //
     // test if a specific column on this board contains a conflict
     hasColConflictAt: function(colIndex) {
+      // time complexity: O(N)
       var n = this.get('n');
       var already1 = false;
       for (var i = 0; i < n; i++) {
@@ -123,6 +126,7 @@
 
     // test if any columns on this board contain conflicts
     hasAnyColConflicts: function() {
+      // time complexity: O(N^n)
       var n = this.get('n');
       for (var i = 0; i < n; i++) {
         if (this.hasColConflictAt(i)) {
@@ -139,6 +143,7 @@
     //
     // test if a specific major diagonal on this board contains a conflict
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
+      // time complexity: O(N)
       var rowCount = 0;
       var columnCount = majorDiagonalColumnIndexAtFirstRow;
       var n = this.get('n');
@@ -160,6 +165,7 @@
 
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function() {
+      // time complexity: O(N^n)
       var n = this.get('n');
       for (var i = -n + 1; i < n; i++) {
         if (this.hasMajorDiagonalConflictAt(i)) {
@@ -175,6 +181,7 @@
     //
     // test if a specific minor diagonal on this board contains a conflict
     hasMinorDiagonalConflictAt: function(minorDiagonalColumnIndexAtFirstRow) {
+      // time complexity: O(N)
       var rowCount = 0;
       var columnCount = minorDiagonalColumnIndexAtFirstRow;
       var n = this.get('n');
@@ -196,6 +203,7 @@
 
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function() {
+      // time complexity: O(N^n)
       var n = this.get('n');
       for (var i = (2 * (n - 1)); i >= 0; i--) {
         if (this.hasMinorDiagonalConflictAt(i)) {

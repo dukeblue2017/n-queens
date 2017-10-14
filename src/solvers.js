@@ -14,6 +14,7 @@
 // return a matrix (an array of arrays) representing a single nxn chessboard, with n rooks placed such that none of them can attack each other
 
 window.findSolution = function(row, n, board, test, callback) {
+  // time complexity: O(N^n)
     if (row === n) {
       callback();
       return;
@@ -31,6 +32,7 @@ window.findSolution = function(row, n, board, test, callback) {
   }
 
 window.findNRooksSolution = function(n) {
+  // time complexity: O(N^n)?
   var board = new Board({n: n});
   var row = 0;
   var column = 0;
@@ -66,6 +68,7 @@ window.findNRooksSolution = function(n) {
 
 // return the number of nxn chessboards that exist, with n rooks placed such that none of them can attack each other
 window.countNRooksSolutions = function(n) {
+
   // var solutionCount = 0;
   // var board = new Board( {n : n} )
 
@@ -91,6 +94,9 @@ window.countNRooksSolutions = function(n) {
   // console.log('Number of solutions for ' + n + ' rooks:', solutionCount);
   // return solutionCount;
 
+
+
+  // time complexity: O(2^N)?
   var solutionCount = 0;
   var board = new Board( {n : n} )
 
@@ -104,6 +110,7 @@ window.countNRooksSolutions = function(n) {
 
 // return a matrix (an array of arrays) representing a single nxn chessboard, with n queens placed such that none of them can attack each other
 window.findNQueensSolution = function(n) {
+  // time complexity: O(N^n)?
   var board = new Board({n: n});
   if ( n === 2 || n === 3 ) {
     return board.rows();
@@ -134,6 +141,7 @@ window.findNQueensSolution = function(n) {
 
 // return the number of nxn chessboards that exist, with n queens placed such that none of them can attack each other
 window.countNQueensSolutions = function(n) {
+  // time complexity: O(2^N)?
   var solutionCount = 0;
   var board = new Board( {n : n} )
 
