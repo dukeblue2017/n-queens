@@ -4,6 +4,7 @@
 
 (function() {
 
+
   window.Board = Backbone.Model.extend({
 
     initialize: function (params) {
