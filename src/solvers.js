@@ -13,6 +13,22 @@
 
 // return a matrix (an array of arrays) representing a single nxn chessboard, with n rooks placed such that none of them can attack each other
 
+window.findSolution = function(row, n, board, test, callback) {
+    if (row === n) {
+      callback();
+      return;
+    }
+
+
+    for (var i = 0; i < n; i++) {
+      board.togglePiece(row, i);
+      
+      if ( !board[test]() ) {
+        findSolution(row + 1, n, board, test, callback);
+        
+      } board.togglePiece(row, i)
+    }
+  }
 
 window.findNRooksSolution = function(n) {
   var board = new Board({n: n});
@@ -50,9 +66,37 @@ window.findNRooksSolution = function(n) {
 
 // return the number of nxn chessboards that exist, with n rooks placed such that none of them can attack each other
 window.countNRooksSolutions = function(n) {
+  // var solutionCount = 0;
+  // var board = new Board( {n : n} )
+
+  // var findSolution = function(row) {
+  //   if (row === n) {
+  //     solutionCount++;
+  //     return;
+  //   }
+
+
+  //   for (var i = 0; i < n; i++) {
+  //     board.togglePiece(row, i);
+      
+  //     if ( !board.hasAnyRooksConflicts() ) {
+  //       findSolution(row + 1);
+        
+  //     } board.togglePiece(row, i)
+  //   }
+  // }
+
+  // findSolution(0);
+
+  // console.log('Number of solutions for ' + n + ' rooks:', solutionCount);
+  // return solutionCount;
+
   var solutionCount = 0;
-  // increment solutioncount if:
-  //
+  var board = new Board( {n : n} )
+
+  findSolution(0, n, board, 'hasAnyRooksConflicts', function() {
+    solutionCount++;
+  });
 
   console.log('Number of solutions for ' + n + ' rooks:', solutionCount);
   return solutionCount;
@@ -90,8 +134,13 @@ window.findNQueensSolution = function(n) {
 
 // return the number of nxn chessboards that exist, with n queens placed such that none of them can attack each other
 window.countNQueensSolutions = function(n) {
-  var solutionCount = undefined; //fixme
+  var solutionCount = 0;
+  var board = new Board( {n : n} )
 
-  console.log('Number of solutions for ' + n + ' queens:', solutionCount);
+  findSolution(0, n, board, 'hasAnyQueensConflicts', function() {
+    solutionCount++;
+  });
+
+  console.log('Number of solutions for ' + n + ' rooks:', solutionCount);
   return solutionCount;
 };
